@@ -1,38 +1,234 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;500&family=Lato:wght@100;300;400&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Jost", sans-serif;
+  font-family: "Lato", sans-serif;
+}
+body {
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 1280px;
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgb(248, 249, 249);
+  -webkit-box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.27);
+  -moz-box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.27);
+  box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.27);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo-img {
+  width: 50px;
+  height: 50px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  flex-direction: row;
 }
 
-.App-link {
-  color: #61dafb;
+.search-icon {
+  height: 30px;
+  width: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  padding-right: 10px;
+}
+
+.logo-text {
+  font-size: 1.2rem;
+}
+
+.logo-text > span {
+  font-weight: bold;
+}
+
+.search-container {
+  border: 1px solid rgb(49, 49, 49);
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+  border-radius: 5px;
+  padding: 3px;
+  background: rgb(248, 249, 249);
+}
+
+.search-container:hover,
+.search-container:focus {
+  border: 1px solid #1173fde7;
+}
+.search-box {
+  border: none;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 5px;
+  background: rgb(248, 249, 249);
+}
+
+.search-box:focus {
+  outline: none;
+}
+
+.profile {
+  padding-left: 10px;
+}
+.profile-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.banner {
+  margin: 1.5rem 0 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sub-heading {
+  font-weight: normal;
+  font-size: 2rem;
+  display: inline-block;
+  /* padding: 5px; */
+}
+
+.ask-btn {
+  padding: 15px;
+  font-size: 1.5rem;
+  font-weight: 300;
+  background-color: #1172fd;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+}
+.ask-btn:hover {
+  cursor: pointer;
+  opacity: 0.95;
+}
+
+hr {
+  background-color: silver;
+}
+
+.banner-container {
+  margin-top: 5rem;
+}
+
+.main-content-container {
+  margin-top: 2rem;
+  border: 1px solid silver;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.question-content {
+  margin: 1rem 1rem;
+  height: auto;
+  /* display: flex; */
+  /* flex-direction: row; */
+}
+.question-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  padding: 15px;
+  /* margin: 0 2rem; */
+}
+
+.misc-text,
+.misc-meta-posted-by {
+  padding: 5px 0;
+  color: rgb(131, 131, 131);
+}
+
+.question-title-link {
+  text-decoration: none;
+  color: #1172fd;
+  word-break: break-all;
+}
+
+.question-title {
+  font-weight: normal;
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
+  display: inline-block;
+  word-wrap: break-all;
+}
+
+.question-title:hover {
+  cursor: pointer;
+  color: #1173fde7;
+}
+
+.tag {
+  background-color: #1173fd54;
+  border-radius: 5px;
+  padding: 5px;
+  margin-right: 5px;
+  color: #1173fde7;
+}
+
+.ask-container {
+  margin-top: 5rem;
+  padding-bottom: 10px;
+}
+
+.label {
+  color: rgb(0, 0, 0);
+  margin: 0.5rem auto;
+  display: inline-block;
+  font-size: 1.2rem;
+}
+
+.input {
+  width: 100%;
+  margin: 0.5rem auto;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  border: 1px solid silver;
+  background-color: #f1f2f3;
+}
+
+.input:focus,
+.input:hover {
+  outline: 1px solid #1173fde7;
+}
+textarea {
+  resize: none;
+}
+
+.form-group {
+  padding: 15px;
+  background-color: #f1f2f3;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.27);
+  -moz-box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.27);
+  box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.27);
+}
+
+.ask-subtitle {
+  color: rgb(131, 131, 131);
+}
+
+.btn2 {
+  margin: 0.3rem 0;
 }

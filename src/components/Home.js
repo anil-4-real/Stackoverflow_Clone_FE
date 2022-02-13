@@ -15,7 +15,7 @@ function Home() {
 
   const getQuestions = async () => {
     await axios
-      .get("http://localhost:3000/question/all")
+      .get("https://stackoverflow-clone-be.herokuapp.com/question/all")
       .then((response) => {
         setQuestions(response.data.data);
       })

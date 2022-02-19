@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import QuestionCard from "./QuestionCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -8,6 +8,7 @@ import axios from "axios";
 function Home() {
   const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
+  console.log(questions);
 
   useEffect(() => {
     getQuestions();
@@ -17,7 +18,7 @@ function Home() {
     await axios
       .get("http://localhost:3000/question/all")
       .then((response) => {
-        setQuestions(response.data.data);
+        setQuestions(response.data.allData);
       })
       .catch((error) => {
         console.log(error);
@@ -35,7 +36,7 @@ function Home() {
           Ask Question
         </button>
       </div>
-      <hr></hr>
+      {/* <hr></hr> */}
       <div className="container main-content-container">
         {questions.map((question, i) => {
           return <QuestionCard key={i} data={question} />;

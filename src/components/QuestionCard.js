@@ -60,7 +60,6 @@ function QuestionCard(props) {
           </p>
         </div>
       </div>
-      <hr />
     </>
   );
 }

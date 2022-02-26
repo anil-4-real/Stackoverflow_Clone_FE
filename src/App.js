@@ -3,23 +3,21 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import DetailedQuestionCard from "./components/DetailedQuestionCard";
-import Question from "./components/Question";
 import Ask from "./components/Ask";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <Router>
         <Header />
         <Routes>
           <Route path="/ask-question" element={<Ask />} />
-          <Route path="/ask" element={<Question />} />
           <Route path="/question/:id" element={<DetailedQuestionCard />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/" element={<Home />} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </>
   );
 }

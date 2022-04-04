@@ -5,7 +5,7 @@ import axios from "axios";
 function QuestionCard(props) {
   const incrementViews = async () => {
     await axios
-      .put(`http://localhost:3000/question/all/${props.data._id}`, {
+      .put(`http://localhost:3001/question/all/${props.data.uid}`, {
         views: props.data.views + 1,
       })
       .then((res) => {})
@@ -39,7 +39,7 @@ function QuestionCard(props) {
         <div className="question-content">
           <Link
             className="question-title-link"
-            to={`/question/${props.data._id}`}
+            to={`/question/${props.data.uid}`}
             onClick={incrementViews}
           >
             <h2 className="question-title">{props.data.title}</h2>
@@ -56,7 +56,7 @@ function QuestionCard(props) {
         </div>
         <div className="misc-meta">
           <p className="misc-meta-posted-by">
-            posted by <span>Anil</span>
+            posted by <span>{props.data.postedby}</span>
           </p>
         </div>
       </div>

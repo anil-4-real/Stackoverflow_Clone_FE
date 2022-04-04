@@ -17,9 +17,9 @@ function Home() {
 
   const getQuestions = async () => {
     await axios
-      .get("https://stackoverflow-clone-be.herokuapp.com/question/all")
+      .get(`${process.env.REACT_APP_API_URL}/question/all`)
       .then((response) => {
-        setQuestions(response.data.data);
+        setQuestions(response.data.data.reverse());
         setLoading(true);
       })
       .catch((error) => {
@@ -27,19 +27,19 @@ function Home() {
       });
   };
   return (
-    <>
+    <div>
+      <div className="banner-container container">
+        <h1 className="sub-heading">Top Questions</h1>
+        <button
+          type="button"
+          className="ask-btn"
+          onClick={() => navigate("/ask-question")}
+        >
+          Ask Question
+        </button>
+      </div>
       {loading ? (
-        <div className="banner-container container">
-          <div className="banner">
-            <h1 className="sub-heading">Top Questions</h1>
-            <button
-              type="button"
-              className="ask-btn"
-              onClick={() => navigate("/ask-question")}
-            >
-              Ask Question
-            </button>
-          </div>
+        <div className="container">
           <div className="container main-content-container">
             {questions.map((question, i) => {
               return <QuestionCard key={i} data={question} />;
@@ -49,7 +49,7 @@ function Home() {
       ) : (
         <Loading />
       )}
-    </>
+    </div>
   );
 }
 

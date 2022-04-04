@@ -5,7 +5,7 @@ import axios from "axios";
 function QuestionCard(props) {
   const incrementViews = async () => {
     await axios
-      .put(`http://localhost:3001/question/all/${props.data.uid}`, {
+      .put(`${process.env.REACT_APP_API_URL}/question/all/${props.data.uid}`, {
         views: props.data.views + 1,
       })
       .then((res) => {})

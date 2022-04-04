@@ -115,14 +115,14 @@ function Ask() {
               }}
             ></input>
             <button
-              disabled={
-                title.length < 20 ||
-                title.length > 50 ||
-                description.length < 20 ||
-                tags.length === 0
-                  ? true
-                  : false
-              }
+              // disabled={
+              //   title.length < 20 ||
+              //   title.length > 50 ||
+              //   description.length < 20 ||
+              //   tags.length === 0
+              //     ? true
+              //     : false
+              // }
               onClick={() => {
                 if (isAuthenticated) {
                   askQuestion();

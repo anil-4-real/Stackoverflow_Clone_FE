@@ -12,20 +12,23 @@ function Ask() {
   const navigate = useNavigate();
   const askQuestion = async () => {
     try {
-      const res = await axios.post("http://localhost:3001/question/new", {
-        title,
-        body: description,
-        tags,
-        views: 0,
-        uid: uuidv4(),
-        votes: 0,
-        answers: [],
-        questions: [],
-        likedby: [],
-        dislikedby: [],
-        postedby: user.nickname,
-        sub: user.sub,
-      });
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/question/new`,
+        {
+          title,
+          body: description,
+          tags,
+          views: 0,
+          uid: uuidv4(),
+          votes: 0,
+          answers: [],
+          questions: [],
+          likedby: [],
+          dislikedby: [],
+          postedby: user.nickname,
+          sub: user.sub,
+        }
+      );
 
       console.log(res);
       if (res.data.statusCode === 201) {
@@ -115,14 +118,14 @@ function Ask() {
               }}
             ></input>
             <button
-              // disabled={
-              //   title.length < 20 ||
-              //   title.length > 50 ||
-              //   description.length < 20 ||
-              //   tags.length === 0
-              //     ? true
-              //     : false
-              // }
+              disabled={
+                title.length < 20 ||
+                title.length > 50 ||
+                description.length < 20 ||
+                tags.length === 0
+                  ? true
+                  : false
+              }
               onClick={() => {
                 if (isAuthenticated) {
                   askQuestion();

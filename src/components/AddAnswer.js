@@ -13,7 +13,7 @@ function AddAnswer() {
   const addAnswer = async () => {
     try {
       const res = await axios.put(
-        `http://localhost:3001/question/answer/${uid}`,
+        `${process.env.REACT_APP_API_URL}/question/answer/${uid}`,
         {
           title,
           body: description,
@@ -67,13 +67,13 @@ function AddAnswer() {
               ></textarea>
 
               <button
-                // disabled={
-                //   title.length < 20 ||
-                //   title.length > 50 ||
-                //   description.length < 20
-                //     ? true
-                //     : false
-                // }
+                disabled={
+                  title.length < 20 ||
+                  title.length > 50 ||
+                  description.length < 20
+                    ? true
+                    : false
+                }
                 onClick={() => {
                   if (isAuthenticated) {
                     addAnswer();

@@ -17,10 +17,12 @@ function QuestionCard(props) {
       <div className="question-container">
         <div className="misc-info">
           <p className="misc-text">
-            {props.data.votes ? (
-              <span>{props.data.votes}&nbsp;</span>
+            {props.data.likedby && props.data.dislikedby ? (
+              <span>
+                {props.data.likedby.length - props.data.dislikedby.length}&nbsp;
+              </span>
             ) : (
-              <span>0&nbsp;</span>
+              <span>{0}&nbsp;</span>
             )}
             votes
           </p>

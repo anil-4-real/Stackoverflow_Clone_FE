@@ -1,6 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
@@ -10,6 +10,10 @@ function Ask() {
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState([]);
   const navigate = useNavigate();
+  // const btnRef = useRef({});
+  // const titleRef = useRef({});
+  // const descriptionRef = useRef({});
+
   const askQuestion = async () => {
     try {
       const res = await axios.post(
@@ -56,6 +60,11 @@ function Ask() {
               (min 20 characters , max 50)
             </p>
             <input
+              // onBlur={() => {
+              //   if (title.length < 20 || title.length > 50) {
+              //     window.alert("Title must be between 20 and 50 characters");
+              //   }
+              // }}
               id="title"
               className="input"
               type="text"
@@ -70,6 +79,11 @@ function Ask() {
               question (min 20 characters)
             </p>
             <textarea
+              // onBlur={() => {
+              //   if (description.length < 20) {
+              //     window.alert("Description must be at least 20 characters");
+              //   }
+              // }}
               rows="20"
               id="description"
               className="input"
@@ -108,27 +122,35 @@ function Ask() {
                 if (tags.length < 5) {
                   if (e.key === "Enter" || e.key === " ") {
                     if (!tags.includes(e.target.value.trim())) {
-                      setTags(() => [...tags, e.target.value.trim()]);
-                      setTimeout(() => {
-                        e.target.value = "";
-                      }, 0);
+                      if (e.target.value.length === 0) {
+                        return;
+                      } else {
+                        setTags(() => [
+                          ...tags,
+                          e.target.value.trim().toLowerCase(),
+                        ]);
+                        setTimeout(() => {
+                          e.target.value = "";
+                        }, 0);
+                      }
                     }
                   }
                 }
               }}
             ></input>
             <button
-              disabled={
-                title.length < 20 ||
-                title.length > 50 ||
-                description.length < 20 ||
-                tags.length === 0
-                  ? true
-                  : false
-              }
               onClick={() => {
-                if (isAuthenticated) {
-                  askQuestion();
+                if (
+                  title.length < 20 ||
+                  title.length > 50 ||
+                  description.length < 20 ||
+                  tags.length === 0
+                ) {
+                  window.alert("Please enter all fields as mentioned ");
+                } else {
+                  if (isAuthenticated) {
+                    askQuestion();
+                  }
                 }
               }}
               className="btn2 ask-btn"

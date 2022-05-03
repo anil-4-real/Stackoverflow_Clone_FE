@@ -86,7 +86,10 @@ function DetailedQuestionCard() {
       {!loading ? (
         <Loading />
       ) : (
-        <div className="container question-page-main-container">
+        <div
+          className="container question-page-main-container"
+          style={{ minHeight: "100vh" }}
+        >
           <div className="question-card-header">
             <h1 className="sub-heading">Question : </h1>
             <button

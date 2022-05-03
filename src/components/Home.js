@@ -27,7 +27,7 @@ function Home() {
       });
   };
   return (
-    <div>
+    <div style={{ minHeight: "100vh" }}>
       <div className="banner-container container">
         <h1 className="sub-heading">Top Questions</h1>
         <button

@@ -67,16 +67,24 @@ function AddAnswer() {
               ></textarea>
 
               <button
-                disabled={
-                  title.length < 20 ||
-                  title.length > 50 ||
-                  description.length < 20
-                    ? true
-                    : false
-                }
+                // disabled={
+                //   title.length < 20 ||
+                //   title.length > 50 ||
+                //   description.length < 20
+                //     ? true
+                //     : false
+                // }
                 onClick={() => {
-                  if (isAuthenticated) {
-                    addAnswer();
+                  if (
+                    title.length < 20 ||
+                    title.length > 50 ||
+                    description.length < 20
+                  ) {
+                    window.alert("Please fill in the form correctly");
+                  } else {
+                    if (isAuthenticated) {
+                      addAnswer();
+                    }
                   }
                 }}
                 className="btn2 ask-btn"

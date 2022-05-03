@@ -26,7 +26,7 @@ function Profile() {
     }
   };
   return (
-    <div className="profile-container container">
+    <div className="profile-container container" style={{ minHeight: "100vh" }}>
       <div className="profile-wrapper">
         {isAuthenticated && (
           <>
